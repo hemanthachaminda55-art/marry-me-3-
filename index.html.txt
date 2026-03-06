@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marry Me - Matrimonial Service</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans Sinhala', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        nav {
+            background: rgba(0,0,0,0.9);
+            padding: 15px 50px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #d4af37;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+
+        .hero {
+            margin-top: 70px;
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1920') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            background: rgba(0,0,0,0.7);
+            padding: 60px;
+            border-radius: 20px;
+            border: 3px solid #d4af37;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            color: #d4af37;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #f0f0f0;
+        }
+
+        .start-date {
+            background: #d4af37;
+            color: #000;
+            padding: 15px 40px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .whatsapp-btn {
+            background: #25d366;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .about {
+            padding: 80px 50px;
+            background: #0f0f1e;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            border: 5px solid #d4af37;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about h2 {
+            font-size: 42px;
+            color: #d4af37;
+            margin-bottom: 30px;
+        }
+
+        .about p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .members-section {
+            padding: 80px 50px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 48px;
+            color: #d4af37;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .membership-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 30px;
+            border: 2px solid #d4af37;
+            background: transparent;
+            color: #d4af37;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            font-family: 'Noto Sans Sinhala', sans-serif;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: #d4af37;
+            color: #000;
+        }
+
+        .tab-btn.free { border-color: #aaa; color: #aaa; }
+        .tab-btn.free:hover, .tab-btn.free.active { background: #aaa; color: #000; }
+
+        .tab-btn.gold { border-color: #ffd700; color: #ffd700; }
+        .tab-btn.gold:hover, .tab-btn.gold.active { background: #ffd700; color: #000; }
+
+        .tab-btn.platinum { border-color: #e5e4e2; color: #e5e4e2; }
+        .tab-btn.platinum:hover, .tab-btn.platinum.active { background: #e5e4e2; color: #000; }
+
+        .add-profile-section {
+            background: rgba(255,255,255,0.03);
+            padding: 50px;
+            border-radius: 20px;
+            margin-bottom: 50px;
+            border: 2px solid rgba(212,175,55,0.3);
+            text-align: center;
+        }
+
+        .add-profile-section h3 {
+            color: #d4af37;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .plan-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .plan-card {
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            padding: 30px;
+            border: 3px solid;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .free-plan { border-color: #aaa; }
+        .gold-plan { border-color: #ffd700; background: linear-gradient(135deg, rgba(255,215,0,0.1), transparent); }
+        .platinum-plan { border-color: #e5e4e2; background: linear-gradient(135deg, rgba(229,228,226,0.1), transparent); }
+
+        .plan-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: #ff4757;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .plan-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .plan-card h4 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .plan-card ul {
+            list-style: none;
+            text-align: left;
+            margin: 20px 0;
+            color: #ccc;
+        }
+
+        .plan-card li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .plan-card li:before {
+            content: "✓ ";
+            color: #d4af37;
+            font-weight: bold;
+        }
+
+        .plan-btn {
+            background: transparent;
+            border: 2px solid currentColor;
+            padding: 12px 30px;
+            border-radius: 50px;
+            color: inherit;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .free-plan .plan-btn { color: #aaa; border-color: #aaa; }
+        .free-plan .plan-btn:hover { background: #aaa; color: #000; }
+
+        .gold-plan .plan-btn { color: #ffd700; border-color: #ffd700; }
+        .gold-plan .plan-btn:hover { background: #ffd700; color: #000; }
+
+        .platinum-plan .plan-btn { color: #e5e4e2; border-color: #e5e4e2; }
+        .platinum-plan .plan-btn:hover { background: #e5e4e2; color: #000; }
+
+        .members-display {
+            margin-top: 50px;
+        }
+
+        .members-display h3 {
+            text-align: center;
+            color: #d4af37;
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .member-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid #d4af37;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212,175,55,0.3);
+        }
+
+        .plan-label {
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            transform: rotate(45deg);
+            padding: 5px 40px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        .plan-label.free { background: #aaa; color: #000; }
+        .plan-label.gold { background: #ffd700; color: #000; }
+        .plan-label.platinum { background: #e5e4e2; color: #000; }
+
+        .gold-card {
+            border: 3px solid #ffd700;
+            box-shadow: 0 10px 30px rgba(255,215,0,0.2);
+        }
+
+        .platinum-card {
+            border: 3px solid #e5e4e2;
+            box-shadow: 0 10px 30px rgba(229,228,226,0.3);
+            background: linear-gradient(135deg, rgba(229,228,226,0.05), transparent);
+        }
+
+        .member-photo {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(45deg, #2a2a4a, #1a1a2e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            color: #d4af37;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-info {
+            padding: 25px;
+        }
+
+        .member-info h3 {
+            font-size: 24px;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+
+        .member-info p {
+            color: #aaa;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .photo-count {
+            background: rgba(212,175,55,0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .expiry {
+            color: #ff6b6b;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .featured-badge {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .contact {
+            padding: 80px 50px;
+            background: #0a0a14;
+            text-align: center;
+        }
+
+        .contact-info {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.05);
+            padding: 50px;
+            border-radius: 20px;
+            border: 2px solid #d4af37;
+        }
+
+        .contact h2 {
+            font-size: 42px;
+            color: #d4af37;
+            margin-bottom: 30px;
+        }
+
+        .address {
+            font-size: 24px;
+            color: #fff;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+
+        .phone {
+            font-size: 32px;
+            color: #25d366;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #000;
+            padding: 30px;
+            text-align: center;
+            border-top: 2px solid #d4af37;
+        }
+
+        footer p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: #1a1a2e;
+            padding: 40px;
+            border-radius: 20px;
+            border: 3px solid #d4af37;
+            max-width: 500px;
+            width: 90%;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .selected-plan-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .selected-plan-header.free { background: rgba(170,170,170,0.2); }
+        .selected-plan-header.gold { background: rgba(255,215,0,0.2); }
+        .selected-plan-header.platinum { background: rgba(229,228,226,0.2); }
+
+        .selected-plan-header h3 {
+            margin: 0;
+            color: #d4af37;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #d4af37;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #d4af37;
+            background: #0f0f1e;
+            color: #fff;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .payment-info {
+            background: rgba(212,175,55,0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #d4af37;
+        }
+
+        .submit-btn {
+            background: #d4af37;
+            color: #000;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: #d4af37;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        @media (max-width: 768px) {
+            .about {
+                flex-direction: column;
+                padding: 40px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero-content {
+                padding: 30px;
+                margin: 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .members-section {
+                padding: 40px 20px;
+            }
+            
+            .add-profile-section {
+                padding: 30px 20px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">💑 Marry Me</div>
+        <ul class="nav-links">
+            <li><a href="#home">මුල් පිටුව</a></li>
+            <li><a href="#about">අපි ගැන</a></li>
+            <li><a href="#members">සාමාජිකයන්</a></li>
+            <li><a href="#contact">සම්බන්ධතාව</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>💑 Marry Me</h1>
+            <p>ඔබේ ජීවිත සහකරුවා සොයාගන්න</p>
+            <p>Find Your Perfect Life Partner</p>
+            <div class="start-date" id="startDate">🎉 ආරම්භක දිනය: 2026 මාර්තු 07</div>
+            <br>
+            <a href="https://wa.me/94782740199" class="whatsapp-btn" target="_blank">📱 WhatsApp: 078 274 0199</a>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800" alt="Wedding Couple">
+            <div style="position: absolute; bottom: -20px; right: -20px; background: #d4af37; color: #000; padding: 15px 30px; border-radius: 50px; font-weight: bold; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">Since 2026</div>
+        </div>
+        <div class="about-content">
+            <h2>අපගේ සේවාව</h2>
+            <p>Marry Me යනු ශ්‍රී ලංකාවේ විශ්වසනීය විවාහ යෝජනා සේවාවකි. අපි ඔබට සුදුසු ජීවිත සහකරුවා සොයාගැනීමට උපකාරී වෙමු.</p>
+            <p>අපගේ සේවාවන්:<br>✓ සුදුසු යෝජනා සොයාගැනීම<br>✓ පෞද්ගලික තොරතුරු ආරක්ෂාව<br>✓ විශ්වසනීය සේවාව</p>
+            <div style="margin-top: 30px; padding: 20px; background: rgba(212,175,55,0.1); border-left: 5px solid #d4af37; border-radius: 10px;">
+                <strong style="color: #d4af37;">📍 ලිපිනය:</strong><br>CR Creation,<br>Galekade, Horampella,<br>Minuwangoda.
+            </div>
+        </div>
+    </section>
+
+    <section class="members-section" id="members">
+        <h2 class="section-title">අපගේ සාමාජිකයන්</h2>
+        
+        <div class="membership-tabs">
+            <button class="tab-btn active" onclick="filterMembers('all')">සියලුම</button>
+            <button class="tab-btn free" onclick="filterMembers('free')">Free</button>
+            <button class="tab-btn gold" onclick="filterMembers('gold')">Gold ⭐</button>
+            <button class="tab-btn platinum" onclick="filterMembers('platinum')">Platinum 💎</button>
+        </div>
+
+        <div class="add-profile-section">
+            <h3>නව ප්‍රොෆයිල් එකතු කරන්න</h3>
+            <p>ඔබගේ සැලසුම තෝරන්න:</p>
+            <div class="plan-cards">
+                <div class="plan-card free-plan" onclick="openAddModal('free')">
+                    <div class="plan-icon">🆓</div>
+                    <h4>Free</h4>
+                    <ul>
+                        <li>පොටෝ 1</li>
+                        <li>මූලික තොරතුරු</li>
+                        <li>7 දින ප්‍රදර්ශනය</li>
+                    </ul>
+                    <button class="plan-btn">නොමිලේ එකතු කරන්න</button>
+                </div>
+                
+                <div class="plan-card gold-plan" onclick="openAddModal('gold')">
+                    <div class="plan-badge">ජනප්‍රියයි</div>
+                    <div class="plan-icon">⭐</div>
+                    <h4>Gold</h4>
+                    <ul>
+                        <li>පොටෝ 5</li>
+                        <li>විස්තරාත්මක තොරතුරු</li>
+                        <li>30 දින ප්‍රදර්ශනය</li>
+                        <li>Priority Listing</li>
+                    </ul>
+                    <button class="plan-btn">Rs. 500/මාසය</button>
+                </div>
+                
+                <div class="plan-card platinum-plan" onclick="openAddModal('platinum')">
+                    <div class="plan-icon">💎</div>
+                    <h4>Platinum</h4>
+                    <ul>
+                        <li>පොටෝ 10</li>
+                        <li>සම්පූර්ණ තොරතුරු</li>
+                        <li>අසීමිත කාලය</li>
+                        <li>Featured Profile</li>
+                        <li>WhatsApp Direct</li>
+                    </ul>
+                    <button class="plan-btn">Rs. 1500/මාසය</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="members-display">
+            <h3 id="currentPlanTitle">සියලුම සාමාජිකයන්</h3>
+            <div class="members-grid" id="membersGrid">
+                <div class="member-card" data-plan="free" onclick="viewProfile(1, 'free')">
+                    <div class="plan-label free">FREE</div>
+                    <div class="member-photo"><span>👤</span></div>
+                    <div class="member-info">
+                        <h3>ප්‍රොෆයිල් 01</h3>
+                        <p>වයස: 28 | කොළඹ<br>වෘත්තිය: ඉංජිනේරු</p>
+                        <div class="photo-count">📷 පොටෝ: 1</div>
+                    </div>
+                </div>
+
+                <div class="member-card gold-card" data-plan="gold" onclick="viewProfile(2, 'gold')">
+                    <div class="plan-label gold">GOLD ⭐</div>
+                    <div class="member-photo"><span>👤</span></div>
+                    <div class="member-info">
+                        <h3>ප්‍රොෆයිල් 02</h3>
+                        <p>වයස: 26 | ගම්පහ<br>වෘත්තිය: ගුරු</p>
+                        <div class="photo-count">📷 පොටෝ: 5</div>
+                        <div class="expiry">ඉවත් වීම: 2026-04-07</div>
+                    </div>
+                </div>
+
+                <div class="member-card platinum-card" data-plan="platinum" onclick="viewProfile(3, 'platinum')">
+                    <div class="plan-label platinum">PLATINUM 💎</div>
+                    <div class="member-photo"><span>👤</span></div>
+                    <div class="member-info">
+                        <h3>ප්‍රොෆයිල් 03</h3>
+                        <p>වයස: 30 | කළුතර<br>වෘත්තිය: වෛද්‍ය</p>
+                        <div class="photo-count">📷 පොටෝ: 10</div>
+                        <div class="featured-badge">⭐ Featured</div>
+                    </div>
+                </div>
+
+                <div class="member-card" data-plan="free" onclick="viewProfile(4, 'free')">
+                    <div class="plan-label free">FREE</div>
+                    <div class="member-photo"><span>👤</span></div>
+                    <div class="member-info">
+                        <h3>ප්‍රොෆයිල් 04</h3>
+                        <p>වයස: 25 | මහනුවර<br>වෘත්තිය: ගණකාධිකාරී</p>
+                        <div class="photo-count">📷 පොටෝ: 1</div>
+                    </div>
+                </div>
+
+                <div class="member-card gold-card" data-plan="gold" onclick="viewProfile(5, 'gold')">
+                    <div class="plan-label gold">GOLD ⭐</div>
+                    <div class="member-photo"><span>👤</span></div>
+                    <div class="member-info">
+                        <h3>ප්‍රොෆයිල් 05</h3>
+                        <p>වයස: 29 | ගාල්ල<br>වෘත්තිය: ව්‍යාපාරික</p>
+                        <div class="photo-count">📷 පොටෝ: 5</div>
+                    </div>
+                </div>
+
+                <div class="member-card platinum-card" data-plan="platinum" onclick="viewProfile(6, 'platinum')">
+                    <div class="plan-label platinum">PLATINUM 💎</div>
+                    <div class="member-photo"><span>👤</span></div>
+                    <div class="member-info">
+                        <h3>ප්‍රොෆයිල් 06</h3>
+                        <p>වයස: 27 | මාතලේ<br>වෘත්තිය: නීතිඥ</p>
+                        <div class="photo-count">📷 පොටෝ: 10</div>
+                        <div class="featured-badge">⭐ Featured</div>
+                    </div>
+                </div>
+
+                <div class="member-card" data-plan="free" onclick="viewProfile(7, 'free')">
+                    <div class="plan-label free">FREE</div>
+                    <div class="member-photo"><span>👤</span></div>
+                    <div class="member-info">
+                        <h3>ප්‍රොෆයිල් 07</h3>
+                        <p>වයස: 31 | යාපනය<br>වෘත්තිය: මෘදුකාංග ඉංජිනේරු</p>
+                        <div class="photo-count">📷 පොටෝ: 1</div>
+                    </div>
+                </div>
+
+                <div class="member-card gold-card" data-plan="gold" onclick="viewProfile(8, 'gold')">
+                    <div class="plan-label gold">GOLD ⭐</div>
+                    <div class="member-photo"><span>👤</span></div>
+                    <div class="member-info">
+                        <h3>ප්‍රොෆයිල් 08</h3>
+                        <p>වයස: 24 | නුවරඑළිය<br>වෘත්තිය: හෙදිය</p>
+                        <div class="photo-count">📷 පොටෝ: 5</div>
+                    </div>
+                </div>
+
+                <div class="member-card platinum-card" data-plan="platinum" onclick="viewProfile(9, 'platinum')">
+                    <div class="plan-label platinum">PLATINUM 💎</div>
+                    <div class="member-photo"><span>👤</span></div>
+                    <div class="member-info">
+                        <h3>ප්‍රොෆයිල් 09</h3>
+                        <p>වයස: 32 | රත්නපුර<br>වෘත්තිය: ප්‍රධාන කළමනාකරු</p>
+                        <div class="photo-count">📷 පොටෝ: 10</div>
+                        <div class="featured-badge">⭐ Featured</div>
+                    </div>
+                </div>
+
+                <div class="member-card" data-plan="free" onclick="viewProfile(10, 'free')">
+                    <div class="plan-label free">FREE</div>
+                    <div class="member-photo"><span>👤</span></div>
+                    <div class="member-info">
+                        <h3>ප්‍රොෆයිල් 10</h3>
+                        <p>වයස: 26 | කුරුණෑගල<br>වෘත්තිය: ගුරු</p>
+                        <div class="photo-count">📷 පොටෝ: 1</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-info">
+            <h2>📞 සම්බන්ධ වන්න</h2>
+            <div class="phone">
+                <a href="https://wa.me/94782740199" style="color: #25d366; text-decoration: none;">WhatsApp: 078 274 0199</a>
+            </div>
+            <div class="address">
+                <strong style="color: #d4af37; font-size: 28px;">CR Creation</strong><br>
+                Galekade,<br>Horampella,<br>Minuwangoda,<br>Sri Lanka.
+            </div>
+            <a href="https://wa.me/94782740199" class="whatsapp-btn" target="_blank" style="margin-top: 30px;">WhatsApp මගින් සම්බන්ධ වන්න</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Marry Me. All rights reserved. | CR Creation Galekade Horampella Minuwangoda</p>
+        <p style="margin-top: 10px; color: #d4af37;">Designed for GitHub Pages</p>
+    </footer>
+
+    <div class="modal" id="addModal">
+        <span class="close-modal" onclick="closeAddModal()">&times;</span>
+        <div class="modal-content">
+            <div class="selected-plan-header" id="selectedPlanHeader">
+                <h3>නව ප්‍රොෆයිල් එකතු කරන්න</h3>
+            </div>
+            <form onsubmit="addProfile(event)">
+                <input type="hidden" id="selectedPlan" value="">
+                
+                <div class="form-group">
+                    <label>සැලසුම:</label>
+                    <select id="planSelect" onchange="updatePlanFields()">
+                        <option value="free">Free - නොමිලේ</option>
+                        <option value="gold">Gold - Rs. 500/මාසය</option>
+                        <option value="platinum">Platinum - Rs. 1500/මාසය</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>ප්‍රධාන ඡායාරූපය</label>
+                    <input type="file" accept="image/*" id="mainPhoto" required>
+                </div>
+
+                <div class="form-group" id="extraPhotos" style="display: none;">
+                    <label>අමතර ඡායාරූප (<span id="photoLimit">0</span> ක් දක්වා)</label>
+                    <input type="file" accept="image/*" multiple id="additionalPhotos">
+                </div>
+
+                <div class="form-group">
+                    <label>සම්පූර්ණ නම</label>
+                    <input type="text" placeholder="නම ඇතුළත් කරන්න" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group" style="flex: 1;">
+                        <label>වයස</label>
+                        <input type="number" placeholder="වයස" required>
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>දිස්ත්‍රික්කය</label>
+                        <input type="text" placeholder="දිස්ත්‍රික්කය" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>වෘත්තිය</label>
+                    <input type="text" placeholder="වෘත්තිය" required>
+                </div>
+
+                <div class="form-group extended-info" style="display: none;">
+                    <label>අධ්‍යාපනය</label>
+                    <input type="text" placeholder="අධ්‍යාපනය">
+                </div>
+
+                <div class="form-group extended-info" style="display: none;">
+                    <label>පවුලේ තොරතුරු</label>
+                    <textarea rows="2" placeholder="පවුලේ තොරතුරු..."></textarea>
+                </div>
+
+                <div class="form-group platinum-only" style="display: none;">
+                    <label>සම්පූර්ණ විස්තර</label>
+                    <textarea rows="3" placeholder="සම්පූර්ණ විස්තර..."></textarea>
+                </div>
+
+                <div class="form-group platinum-only" style="display: none;">
+                    <label>අපේක්ෂිත ගුණාංග</label>
+                    <textarea rows="2" placeholder="අපේක්ෂිත ගුණාංග..."></textarea>
+                </div>
+
+                <div class="payment-info" id="paymentInfo" style="display: none;">
+                    <h4 style="color: #d4af37; margin-bottom: 10px;">💳 ගෙවීම් තොරතුරු</h4>
+                    <p id="paymentAmount"></p>
+                    <p style="font-size: 14px; color: #aaa; margin-top: 10px;">
+                        ගෙවීම් කළ පසු ඔබගේ ප්‍රොෆයිල් අනුමත කරනු ලැබේ.<br>
+                        WhatsApp: 078 274 0199
+                    </p>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">ප්‍රොෆයිල් එකතු කරන්න</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const today = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const dateString = today.toLocaleDateString('si-LK', options);
+        document.getElementById('startDate').innerHTML = `🎉 ආරම්භක දිනය: ${dateString}`;
+
+        function filterMembers(plan) {
+            const cards = document.querySelectorAll('.member-card');
+            const buttons = document.querySelectorAll('.tab-btn');
+            const title = document.getElementById('currentPlanTitle');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const titles = {
+                'all': 'සියලුම සාමාජිකයන්',
+                'free': 'Free සාමාජිකයන්',
+                'gold': 'Gold සාමාජිකයන් ⭐',
+                'platinum': 'Platinum සාමාජිකයන් 💎'
+            };
+            title.textContent = titles[plan];
+            
+            cards.forEach(card => {
+                if (plan === 'all' || card.dataset.plan === plan) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeIn 0.5s ease';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function openAddModal(plan) {
+            document.getElementById('addModal').style.display = 'flex';
+            document.getElementById('selectedPlan').value = plan;
+            document.getElementById('planSelect').value = plan;
+            updatePlanFields();
+            
+            const header = document.getElementById('selectedPlanHeader');
+            header.className = 'selected-plan-header ' + plan;
+        }
+
+        function closeAddModal() {
+            document.getElementById('addModal').style.display = 'none';
+        }
+
+        function updatePlanFields() {
+            const plan = document.getElementById('planSelect').value;
+            const extraPhotos = document.getElementById('extraPhotos');
+            const photoLimit = document.getElementById('photoLimit');
+            const extendedInfo = document.querySelectorAll('.extended-info');
+            const platinumOnly = document.querySelectorAll('.platinum-only');
+            const paymentInfo = document.getElementById('paymentInfo');
+            const paymentAmount = document.getElementById('paymentAmount');
+            const submitBtn = document.getElementById('submitBtn');
+            const header = document.getElementById('selectedPlanHeader');
+            
+            extraPhotos.style.display = 'none';
+            extendedInfo.forEach(el => el.style.display = 'none');
+            platinumOnly.forEach(el => el.style.display = 'none');
+            paymentInfo.style.display = 'none';
+            
+            switch(plan) {
+                case 'free':
+                    photoLimit.textContent = '0';
+                    submitBtn.textContent = 'නොමිලේ ප්‍රොෆයිල් එකතු කරන්න';
+                    submitBtn.style.background = '#d4af37';
+                    submitBtn.style.color = '#000';
+                    header.className = 'selected-plan-header free';
+                    break;
+                    
+                case 'gold':
+                    extraPhotos.style.display = 'block';
+                    photoLimit.textContent = '4';
+                    extendedInfo.forEach(el => el.style.display = 'block');
+                    paymentInfo.style.display = 'block';
+                    paymentAmount.innerHTML = '<strong>මාසික ගාස්තුව:</strong> Rs. 500.00<br><strong>කාලසීමාව:</strong> දින 30';
+                    submitBtn.textContent = 'ගෙවීම් කර ප්‍රොෆයිල් එකතු කරන්න';
+                    submitBtn.style.background = '#ffd700';
+                    submitBtn.style.color = '#000';
+                    header.className = 'selected-plan-header gold';
+                    break;
+                    
+                case 'platinum':
+                    extraPhotos.style.display = 'block';
+                    photoLimit.textContent = '9';
+                    extendedInfo.forEach(el => el.style.display = 'block');
+                    platinumOnly.forEach(el => el.style.display = 'block');
+                    paymentInfo.style.display = 'block';
+                    paymentAmount.innerHTML = '<strong>මාසික ගාස්තුව:</strong> Rs. 1500.00<br><strong>කාලසීමාව:</strong> අසීමිත';
+                    submitBtn.textContent = 'ගෙවීම් කර Platinum ප්‍රොෆයිල් එකතු කරන්න';
+                    submitBtn.style.background = '#e5e4e2';
+                    submitBtn.style.color = '#000';
+                    header.className = 'selected-plan-header platinum';
+                    break;
+            }
+        }
+
+        function viewProfile(id, plan) {
+            const planNames = { 'free': 'Free', 'gold': 'Gold', 'platinum': 'Platinum' };
+            alert(`ප්‍රොෆයිල් ${id} - ${planNames[plan]} Plan\n\nවැඩි විස්තර සඳහා WhatsApp අමතන්න:\n078 274 0199`);
+        }
+
+        function addProfile(event) {
+            event.preventDefault();
+            const plan = document.getElementById('selectedPlan').value;
+            
+            const messages = {
+                'free': 'Free ප්‍රොෆයිල් එක එකතු කරන ලදී! එය දින 7ක් ප්‍රදර්ශනය වේ.',
+                'gold': 'Gold ප්‍රොෆයිල් එක එකතු කරන ලදී! ගෙවීම් තහවුරු කිරීමෙන් පසු එය සක්‍රීය වේ.',
+                'platinum': 'Platinum ප්‍රොෆයිල් එක එකතු කරන ලදී! ගෙවීම් තහවුරු කිරීමෙන් පසු Featured ලෙස ප්‍රදර්ශනය වේ.'
+            };
+            
+            alert(messages[plan] + '\n\nවැඩි විස්තර සඳහා WhatsApp: 078 274 0199');
+            closeAddModal();
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('addModal');
+            if (event.target == modal) {
+                closeAddModal();
+            }
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
